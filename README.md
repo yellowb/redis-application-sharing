@@ -33,21 +33,25 @@ PS：以下教程都只针对Win10，如果是Linux用户，那么根本不需�
 ### redis-for-docker-安装
 
 **Step 1：拉取Redis镜像**
+
 在命令行下执行`docker pull redis:4.0.11`，会把Redis 4.0.11的Docker镜像下载到本地，当然你也可以下载其他版本，请上仓库的网站自行搜索：
 
 ![](https://raw.githubusercontent.com/yellowb/redis-application-sharing/imgs/imgs/docker-image-pull.png)
 
 **Step 2：查看Redis镜像id**
+
 执行`docker image ls`查看已经下载成功的镜像，`IMAGE ID`这列即是镜像的ID，等下运行会用到。
 
 ![](https://raw.githubusercontent.com/yellowb/redis-application-sharing/imgs/imgs/docker-image-ls.png)
 
 **Step 3：用Docker镜像启动Docker容器**
+
 执行`docker run -p 6379:6379 4e`，用刚刚下载的Redis镜像启动一个容器。其中`6379`是Redis的默认端口，表示把容器中的`6379`端口绑定到本机的`6379`端口；而`4e`即Redis镜像的ID的前2位前缀，执行Docker命令时并不要求输入完整的ID，因为ID太长了不方便，所以一般只需要输入一个可区分不同镜像/容器的ID前缀就可以了。
 
 ![](https://raw.githubusercontent.com/yellowb/redis-application-sharing/imgs/imgs/docker-image-run.png)
 
 **Step 4：查看正在运行的Redis容器id**
+
 执行`docker container ls`或`docker ps`，会罗列出正在运行的容器，入下图所示CONTAINER ID为cef87d002d9c的容器就是刚刚通过Redis镜像启动的容器：
 
 ![](https://raw.githubusercontent.com/yellowb/redis-application-sharing/imgs/imgs/docker-container-ls.png)
@@ -57,6 +61,7 @@ PS：以下教程都只针对Win10，如果是Linux用户，那么根本不需�
 如果想停止容器或想重新启动，可以用`docker stop <CONTAINER ID>`/`docker start <CONTAINER ID>`
 
 **Step 5：登入到Redis容器中并运行其自带的Redis客户端**
+
 Redis镜像中自带了一个默认的Redis客户端：Redis-Cli，通过它可以执行任何Redis支持的命令，也可以验证Redis是否正常工作。执行`docker exec -it ce redis-cli`，进入刚刚启动起来的容器里并运行redis-cli客户端，其中`ce`是容器ID。
 
 ![](https://raw.githubusercontent.com/yellowb/redis-application-sharing/imgs/imgs/docker-container-exec-rediscli.png)
