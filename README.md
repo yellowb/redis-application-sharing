@@ -67,7 +67,7 @@ Redis镜像中自带了一个默认的Redis客户端：Redis-Cli，通过它可�
 ![](https://raw.githubusercontent.com/yellowb/redis-application-sharing/imgs/imgs/docker-container-exec-rediscli.png)
 
 ## 示例代码使用注意事项
-示例代码是一个Java工程，依赖管理用的是gradle，请先参照[gradle官网](https://gradle.org/install/ "gradle官网")下载并设置好环境变量。
+示例代码是一个Java工程，依赖管理用的是**gradle**，请先参照[gradle官网](https://gradle.org/install/ "gradle官网")下载并设置好环境变量。
 
-可以用IntelliJ IDEA直接导入本项目，点击File菜单下的Open，选中源码中的build.gradle文件即可。
+可以用**IntelliJ IDEA**直接导入本项目，点击**File**菜单下的**Open**，选中源码中的`build.gradle`文件即可。
 
