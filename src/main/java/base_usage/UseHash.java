@@ -2,22 +2,24 @@ package base_usage;
 
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;
-import io.lettuce.core.api.sync.RedisSetCommands;
+import io.lettuce.core.api.sync.RedisHashCommands;
 
 import java.util.*;
 
 /**
- * Sample for set/get set.
+ * Sample for set/get hash
  */
-public class UseSet {
+public class UseHash {
+
     public static void main(String[] args) {
         RedisClient client = RedisClient.create("redis://localhost:6379");
         StatefulRedisConnection<String, String> connection = client.connect();
-        RedisSetCommands<String, String> sync = connection.sync();
-        sync.sadd("set1", "el1", "el1", "el2");
-        Set<String> set1 = sync.smembers("set1");
-        // expect el1,el2
-        System.out.println(set1.toString());
+        RedisHashCommands<String, String> sync = connection.sync();
+        sync.hset("hash1", "name", "Tom");
+        sync.hset("hash1", "age", "20");
+        Map<String, String> hash1 = sync.hgetall("hash1");
+        // expect {name=Tom, age=20}
+        System.out.println(hash1.toString());
         connection.close();
         client.shutdown();
     }
