@@ -6,7 +6,6 @@ package data_structure.easy;
 public class IntReverse {
 
     public static void main(String[] args) {
-////        System.out.println(-123 % 10);
         System.out.println(new IntReverse().reverse(123));
         System.out.println(new IntReverse().reverse(-123));
         System.out.println(new IntReverse().reverse(120));
